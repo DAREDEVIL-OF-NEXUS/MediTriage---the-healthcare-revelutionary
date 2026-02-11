@@ -5,126 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MediTriage</title>
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            height: 100vh;
-
-            background:
-                linear-gradient(rgba(255,255,255,0.65), rgba(255,255,255,0.65)),
-                url("./FRONTEND/resources/images.jpeg") center/cover no-repeat;
-
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-
-        .logo {
-            font-size: 72px;
-            font-weight: bold;
-            color: #2E7D32; /* strong medical green */
-            margin-bottom: 20px;
-            animation: fadeIn 1s ease;
-        }
-
-        .tagline {
-            font-size: 32px;
-            font-weight: 600;
-            max-width: 800px;
-            line-height: 1.6;
-            color: #1F2933; /* dark charcoal */
-            animation: fadeIn 2s ease;
-        }
-
-        .btn {
-            margin-top: 40px;
-            padding: 15px 35px;
-            font-size: 18px;
-            border: none;
-            text-decoration: none;
-            border-radius: 8px;
-            background-color: #2E7D32;
-            color: white;
-            cursor: pointer;
-            transition: 1s;
-        }
-
-        .btn:hover {
-            background-color: #000000;
-            color: white;
-            transform: scale(1.2);
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(60px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .container {
-            position: fixed;
-            top: 0;
-            font-size: 25px;
-            width: 100%;
-            display: flex;
-            justify-content: flex-start;
-            padding: 20px 40px;
-            text-decoration: none;
-            gap: 20px;
-            margin-left: 30px;
-            animation: backwards rightin 2s ease-in-out;
-        }
-
-        .container a {
-            color: #1F2933;
-            text-decoration: none;
-            color: solid black;
-        }
-
-        .container a:hover {
-            color: #2E7D32;
-            font-weight: bold;
-            text-decoration: underline;
-            transform: scale(1.2);
-        }
-
-        @keyframes rightin {
-            from {
-                opacity: 0;
-                transform: translateX(100vw);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0vw);
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="./FRONTEND/index_page/style.css">
 </head>
 <body>
      
-    <div class="container">
-    <a href="#">Home</a>
-    <a href="#">About</a>
-    <a href="#">Contact</a>
+    <div class="firstpage">
+        <div class="container">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+        </div>
+
+        <div class="logo">MediTriage</div>
+
+        <div class="tagline">
+            Self-triage symptom checker.<br>
+            Guides patients to the right level of care — anytime, anywhere.
+        </div>
+
+        <a href="./triage.html" class="btn">Start Triage</a>
     </div>
 
-    <div class="logo">MediTriage</div>
+    <div class="secondpage">
+        About MediTriage
+        MediTriage is a simple, intelligent self-triage tool designed to help people understand their symptoms and choose the right level of care. Instead of guessing whether a condition requires home care, a clinic visit, or emergency attention, MediTriage guides users through a structured symptom check and provides clear, practical recommendations.
 
-    <div class="tagline">
-        Self-triage symptom checker.<br>
-        Guides patients to the right level of care — anytime, anywhere.
+        Our goal is to reduce unnecessary hospital visits, save time for both patients and doctors, and make basic health guidance accessible anytime, anywhere.
+
+        if you have a fever, cough, and body aches, MediTriage might suggest home care with rest and fluids. If you have chest pain or difficulty breathing, it would recommend seeking emergency care immediately. By providing personalized advice based on symptoms, MediTriage empowers users to make informed decisions about their health and ensures they receive the appropriate care when they need it most.
     </div>
-
-    <a href="./triage.html" class="btn">Start Triage</a>
-
-
 </body>
 </html>
