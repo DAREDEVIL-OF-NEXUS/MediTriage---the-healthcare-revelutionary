@@ -25,6 +25,7 @@ def home():
 
 
 @app.route("/predict", methods=["POST"])
+@app.route("/api/predict", methods=["POST"])
 def predict():
     data = request.get_json()
     user_symptoms = data.get("symptoms", [])
