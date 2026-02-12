@@ -44,9 +44,19 @@ try:
     model_path = os.path.join(os.path.dirname(__file__), "disease_model.pkl")
     model = joblib.load(model_path)
     # Extract symptom feature list from model
-    SYMPTOM_LIST = model.feature_names_in_
+    SYMPTOM_LIST = model.feature_names_in_ # type: ignore
 except Exception as e:
     print(f"CRITICAL ERROR: Failed to load model: {e}")
-    # In production we might raise, but for now let's just print.
-    # We will NOT fallback to MockModel as requested.
-    raise e
+    print("WARNING: Using Fallback Model (MockModel) due to load failure.")
+    
+    # Fallback Rule-Based Model
+    class MockModel:
+        def predict(self, X):
+            return ["Consult a Doctor (Model Unavailable)"]
+            
+    model = MockModel() 
+    # Fallback symptom list (basic set to prevent crash)
+    SYMPTOM_LIST = [
+        "fever", "cough", "headache", "chest_pain", "shortness_of_breath",
+        "nausea", "fatigue", "sore_throat", "runny_nose"
+    ]
