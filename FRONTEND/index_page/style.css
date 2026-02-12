@@ -20,6 +20,11 @@ body {
     height: 100vh;
 }
 
+.navbar{
+    position: fixed;
+    z-index: 1000;
+}
+
 .logo {
     font-size: 72px;
     font-weight: bold;
@@ -165,4 +170,22 @@ body {
 .show-box {
     opacity: 1;
     transform: translateY(0);
+}
+
+.additional {
+    color: #0d9014;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.additional:hover {
+    text-decoration: underline;
+    color: #000000;
+    color: white;
+    padding: 20px;
+    background-color: black;
+}
+
+.background-video {
+    margin-left: 120px;
 }
