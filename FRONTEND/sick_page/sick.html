@@ -13,68 +13,23 @@
     <p class="tagline">AI-powered health triage system</p>
 
     <form id="symptomForm">
-
         <h2>Select your symptoms</h2>
 
-        <div class="card-grid">
+        <!-- Search bar -->
+        <input 
+            type="text" 
+            id="symptomSearch" 
+            class="search-bar" 
+            placeholder="Search symptoms..."
+        >
 
-            <label class="card">
-                <input type="checkbox" value="fever">
-                <span>Fever</span>
-            </label>
-
-            <label class="card">
-                <input type="checkbox" value="cough">
-                <span>Cough</span>
-            </label>
-
-            <label class="card">
-                <input type="checkbox" value="headache">
-                <span>Headache</span>
-            </label>
-
-            <label class="card">
-                <input type="checkbox" value="fatigue">
-                <span>Fatigue</span>
-            </label>
-
-            <label class="card">
-                <input type="checkbox" value="chest_pain">
-                <span>Chest Pain</span>
-            </label>
-
-            <label class="card">
-                <input type="checkbox" value="shortness_of_breath">
-                <span>Breathing Issue</span>
-            </label>
-
-            <label class="card">
-                <input type="checkbox" value="nausea">
-                <span>Nausea</span>
-            </label>
-
-            <label class="card">
-                <input type="checkbox" value="sore_throat">
-                <span>Sore Throat</span>
-            </label>
-
-            <label class="card">
-                <input type="checkbox" value="runny_nose">
-                <span>Runny Nose</span>
-            </label>
-
-        </div>
+        <!-- Scrollable symptom cards -->
+        <div id="symptom-container" class="card-grid scrollable"></div>
 
         <button type="submit" class="check-btn">
             Check Condition
         </button>
     </form>
-
-    <div id="result" class="result hidden">
-        <h2>Result</h2>
-        <p id="severity"></p>
-        <p id="disease"></p>
-    </div>
 
     <p class="disclaimer">
         ⚠ This is an educational tool and not a substitute for professional medical advice.

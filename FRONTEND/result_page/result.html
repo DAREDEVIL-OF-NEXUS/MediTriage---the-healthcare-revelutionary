@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediTriage Result</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="page">
+        <section class="result-shell">
+            <div class="header-row">
+                <div>
+                    <h1>MediTriage Report</h1>
+                    <p class="subtext">AI-generated triage output with practical next steps</p>
+                </div>
+                <a href="../sick_page/sick.html" class="back-btn">Check Another Condition</a>
+            </div>
+
+            <section class="summary-grid">
+                <article class="info-card disease-card">
+                    <p class="label">Possible Condition</p>
+                    <h2 id="diseaseName">Loading...</h2>
+                </article>
+
+                <article class="info-card severity-card">
+                    <p class="label">Severity</p>
+                    <h2 id="severityText">Loading...</h2>
+                    <span id="severityBadge" class="badge">Pending</span>
+                </article>
+            </section>
+
+            <section class="panel">
+                <h3>Selected Symptoms</h3>
+                <div id="symptomChips" class="chip-wrap"></div>
+            </section>
+
+            <section class="panel">
+                <h3>Recommended Actions</h3>
+                <div id="recommendationGrid" class="recommendation-grid"></div>
+            </section>
+
+            <p class="disclaimer">
+                ⚠ This report is informational only and does not replace professional medical advice.
+            </p>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

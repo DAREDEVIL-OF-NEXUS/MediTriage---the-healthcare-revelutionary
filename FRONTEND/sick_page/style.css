@@ -2,92 +2,171 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-    background: linear-gradient(135deg, #0f2027, #2c5364);
+    background:
+        radial-gradient(circle at 10% 20%, #ffe082 0%, transparent 25%),
+        radial-gradient(circle at 90% 15%, #80deea 0%, transparent 28%),
+        radial-gradient(circle at 25% 90%, #ce93d8 0%, transparent 26%),
+        linear-gradient(145deg, #0f2027 0%, #203a43 45%, #2c5364 100%);
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 24px;
+    background-size: 140% 140%;
+    animation: gradientShift 16s ease infinite;
 }
 
 .container {
-    background: white;
-    padding: 30px;
-    border-radius: 15px;
-    width: 90%;
-    max-width: 700px;
+    background: rgba(255, 255, 255, 0.93);
+    padding: 35px;
+    border-radius: 18px;
     text-align: center;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-    animation: fadeIn 0.8s ease;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(8px);
+    animation: popIn 0.75s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .logo {
-    font-size: 2.2rem;
+    font-size: 2.4rem;
     margin-bottom: 5px;
+    color: #102542;
 }
 
 .tagline {
-    color: #777;
+    color: #4e5b6e;
     margin-bottom: 25px;
 }
 
+h2 {
+    margin-bottom: 15px;
+    color: #13213c;
+}
+
+/* Search bar */
+.search-bar {
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid #d6dbe4;
+    margin-bottom: 15px;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search-bar:focus {
+    border-color: #5e7ce2;
+    box-shadow: 0 0 0 4px rgba(94, 124, 226, 0.15);
+}
+
+/* Grid layout */
 .card-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-    gap: 15px;
-    margin-bottom: 25px;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 12px;
+}
+
+/* Scrollable area */
+.scrollable {
+    max-height: 400px;
+    width: 60vw;
+    overflow-y: auto;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #e3e8f0;
+    border-radius: 14px;
+    background: linear-gradient(180deg, #f7f9fc 0%, #f1f5fb 100%);
 }
 
 /* Card styling */
 .card {
-    background: #f3f6fa;
-    padding: 20px;
-    border-radius: 12px;
+    --card-bg: #f3f4f6;
+    --card-border: #e5e7eb;
+    --card-text: #0f172a;
+    background: var(--card-bg);
+    padding: 14px;
+    border-radius: 10px;
     cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    font-size: 13px;
+    font-weight: 600;
+    border: 1px solid var(--card-border);
+    color: var(--card-text);
     text-align: center;
-    font-weight: bold;
+    position: relative;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+    animation: cardIn 0.45s ease forwards;
+    animation-delay: var(--card-delay, 0ms);
 }
 
-/* Hide checkbox */
+/* Hide checkbox but keep it functional */
 .card input {
-    display: none;
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
 }
 
 /* Hover effect */
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    transform: translateY(-3px) scale(1.01);
+    box-shadow: 0 10px 22px rgba(15, 23, 42, 0.16);
 }
 
 /* Selected card */
-.card input:checked + span {
-    color: green;
+.card:has(input:checked) {
+    border-color: #0f172a;
+    box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.15), 0 10px 22px rgba(15, 23, 42, 0.18);
+    transform: translateY(-2px);
+    animation: cardIn 0.45s ease forwards, pulseSelect 0.4s ease;
 }
 
+/* Button */
 .check-btn {
-    background: #2c7be5;
+    background: linear-gradient(135deg, #2563eb 0%, #0ea5e9 100%);
     color: white;
-    padding: 14px 30px;
+    padding: 14px 32px;
     font-size: 16px;
-    border-radius: 8px;
+    border-radius: 10px;
+    border: none;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    box-shadow: 0 10px 18px rgba(14, 116, 217, 0.25);
+    position: relative;
+    overflow: hidden;
 }
 
 .check-btn:hover {
-    transform: scale(1.05);
-    background: #0a65ed;
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 16px 24px rgba(14, 116, 217, 0.32);
+}
+
+.check-btn::after {
+    content: "";
+    position: absolute;
+    top: -120%;
+    left: -35%;
+    width: 30%;
+    height: 300%;
+    background: rgba(255, 255, 255, 0.35);
+    transform: rotate(18deg);
+    transition: left 0.5s ease;
+}
+
+.check-btn:hover::after {
+    left: 120%;
 }
 
 .result {
     margin-top: 20px;
-    padding: 15px;
-    border-radius: 10px;
+    padding: 18px;
+    border-radius: 12px;
     animation: fadeIn 0.2s ease;
 }
 
@@ -124,5 +203,55 @@ body {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: translateY(14px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes cardIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes pulseSelect {
+    0% {
+        box-shadow: 0 0 0 0 rgba(15, 23, 42, 0.22), 0 10px 22px rgba(15, 23, 42, 0.18);
+    }
+    100% {
+        box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.15), 0 10px 22px rgba(15, 23, 42, 0.18);
+    }
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
     }
 }
