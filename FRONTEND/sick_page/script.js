@@ -43,7 +43,7 @@ function getBaseUrl() {
         return "http://127.0.0.1:5000";
     }
 
-    return "https://meditriage-the-healthcare-revolutionary.onrender.com";
+    return "https://meditriage-the-healthcare-revelutionary.onrender.com";
 }
 
 function getApiCandidates(path) {
